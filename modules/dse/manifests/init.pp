@@ -1,4 +1,9 @@
 class dse{
+$ipaddress = $::ipaddress
+$clustername = "Sumanth_cluster"
+$endpoint = "GossipingPropertyFileSnitch"
+$authorizer1 = "CassandraAuthorizer"
+$authenticator1 = "PasswordAuthenticator"
 package { 'dse-full':
    ensure => '4.8.9-1',
    before => Service['dse'],
@@ -19,9 +24,4 @@ file {'/etc/dse/cassandra/cassandra.yaml' :
 }
 notify {"osfamily: $::osfamily":}
 notify {"ipaddress1 => $::ipaddress":}
-$ipaddress = $::ipaddress
-$clustername = "Sumanth_cluster"
-$endpoint = "GossipingPropertyFileSnitch"
-$authorizer1 = "CassandraAuthorizer"
-$authenticator1 = "PasswordAuthenticator" 
 }
